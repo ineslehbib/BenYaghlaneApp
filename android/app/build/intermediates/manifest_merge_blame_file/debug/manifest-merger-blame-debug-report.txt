@@ -1,0 +1,107 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.ionic.starttheme"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="22"
+8-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml
+10
+11    <!-- Permissions -->
+12
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:41:5-67
+13-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:41:22-64
+14    <uses-permission android:name="android.permission.VIBRATE" />
+14-->[:capacitor-haptics] C:\ionic-start-theme\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:5-66
+14-->[:capacitor-haptics] C:\ionic-start-theme\node_modules\@capacitor\haptics\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:7:22-63
+15
+16    <application
+16-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:4:5-37:19
+17        android:allowBackup="true"
+17-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:6:9-35
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.8.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\c03efd9a0015437520d15a440f54260f\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+19        android:debuggable="true"
+20        android:icon="@mipmap/ic_launcher"
+20-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:7:9-43
+21        android:label="@string/app_name"
+21-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:8:9-41
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:9:9-54
+23        android:supportsRtl="true"
+23-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:10:9-35
+24        android:testOnly="true"
+25        android:theme="@style/AppTheme"
+25-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:11:9-40
+26        android:usesCleartextTraffic="true" >
+26-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:5:7-42
+27        <activity
+27-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:13:9-26:20
+28            android:name="com.ionic.starttheme.MainActivity"
+28-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:15:13-61
+29            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+29-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:14:13-129
+30            android:exported="true"
+30-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:19:13-36
+31            android:label="@string/title_activity_main"
+31-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:16:13-56
+32            android:launchMode="singleTask"
+32-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:18:13-44
+33            android:theme="@style/AppTheme.NoActionBarLaunch" >
+33-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:17:13-62
+34            <intent-filter>
+34-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:21:13-24:29
+35                <action android:name="android.intent.action.MAIN" />
+35-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:22:17-69
+35-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:22:25-66
+36
+37                <category android:name="android.intent.category.LAUNCHER" />
+37-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:23:17-77
+37-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:23:27-74
+38            </intent-filter>
+39        </activity>
+40
+41        <provider
+42            android:name="androidx.core.content.FileProvider"
+42-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:29:13-62
+43            android:authorities="com.ionic.starttheme.fileprovider"
+43-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:30:13-64
+44            android:exported="false"
+44-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:31:13-37
+45            android:grantUriPermissions="true" >
+45-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:32:13-47
+46            <meta-data
+46-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:33:13-35:64
+47                android:name="android.support.FILE_PROVIDER_PATHS"
+47-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:34:17-67
+48                android:resource="@xml/file_paths" />
+48-->C:\ionic-start-theme\android\app\src\main\AndroidManifest.xml:35:17-51
+49        </provider>
+50        <provider
+50-->[androidx.emoji2:emoji2:1.0.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\70303eae214240f25e9159e2f8aafa12\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+51            android:name="androidx.startup.InitializationProvider"
+51-->[androidx.emoji2:emoji2:1.0.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\70303eae214240f25e9159e2f8aafa12\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+52            android:authorities="com.ionic.starttheme.androidx-startup"
+52-->[androidx.emoji2:emoji2:1.0.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\70303eae214240f25e9159e2f8aafa12\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+53            android:exported="false" >
+53-->[androidx.emoji2:emoji2:1.0.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\70303eae214240f25e9159e2f8aafa12\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+54            <meta-data
+54-->[androidx.emoji2:emoji2:1.0.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\70303eae214240f25e9159e2f8aafa12\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+55                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+55-->[androidx.emoji2:emoji2:1.0.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\70303eae214240f25e9159e2f8aafa12\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+56                android:value="androidx.startup" />
+56-->[androidx.emoji2:emoji2:1.0.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\70303eae214240f25e9159e2f8aafa12\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+57            <meta-data
+57-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\41a54e902d1217f18ed076c1330b313f\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+58                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+58-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\41a54e902d1217f18ed076c1330b313f\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+59                android:value="androidx.startup" />
+59-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\ionic-start-theme\node_modules\@capacitor\app\android\.gradle\caches\transforms-3\41a54e902d1217f18ed076c1330b313f\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+60        </provider>
+61    </application>
+62
+63</manifest>
