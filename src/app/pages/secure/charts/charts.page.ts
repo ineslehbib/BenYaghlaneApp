@@ -204,12 +204,14 @@ export class ChartsPage implements OnInit {
   ) {
     this.qrCode = '9800102200305';
     console.log(sessionStorage.getItem('No'));
+    // Service.soapCall();
   }
 
   data: any;
   ngOnInit() {
     // Create bar chart
     this.createBarChart();
+
 
 
   }

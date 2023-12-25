@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CapacitorHttp, HttpResponse } from '@capacitor/core';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,18 +13,22 @@ export class DataService {
   apiUrl: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
   login: string = "Ines";
   password: string = "Ines@2025";
-  soapUrl: string = 'http://192.168.1.89:1947/BYC_PROD/WS/GRANDE%20EPICERIE%20BEN%20YAGHLANE/Codeunit/ECOM_BYC_API_EXT';
-  soapAction: string = 'urn:microsoft-dynamics-nav/coupon_management';
 
 
+  chVal: String;
+  choosenNumberValue: String;
   constructor() {
+    // this.soap.createClient('http://192.168.1.89:3247/BYS_WS/WS/GRANDE EPICERIE BEN YAGHLANE/Codeunit/MobileApp?wsdl')
+    //   .then(client => this.client = client)
+    //   .catch(error => console.error('Error creating SOAP client:', error));
   }
+
 
   async getArticle(): Promise<any> {
     try {
       const response = await CapacitorHttp.request({
         method: 'GET',
-        url: `${this.apiUrl}/LSArticle?$filter=Item_Category_Code eq '0101'`,
+        url: `${this.apiUrl}/OfferItems`,
         headers: {
           Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
         }
@@ -34,5 +39,6 @@ export class DataService {
       console.error('Error fetching data:', error);
       throw error; // Rethrow the error to be caught by the caller
     }
-  }
+  };
+
 }

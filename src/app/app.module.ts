@@ -16,7 +16,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 import { Plugin } from '@awesome-cordova-plugins/core';
 const { Http } = Plugins;
-
+ 
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +28,8 @@ const { Http } = Plugins;
     ReactiveFormsModule,
     AppRoutingModule,
     NgChartsModule
+
+
   ],
   providers: [SQLite,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

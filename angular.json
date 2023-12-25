@@ -159,5 +159,9 @@
     "@ionic/angular-toolkit:page": {
       "styleext": "scss"
     }
-  }
+  },
+  "assets": [
+    "assets",
+    "web.config"
+  ]
 }

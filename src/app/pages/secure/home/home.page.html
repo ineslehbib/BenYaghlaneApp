@@ -13,7 +13,12 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <div style="text-align: center;">
+  <!-- <div style="text-align: center;">
     <img src="../../../../assets/home.png">
-  </div>
+  </div> -->
+  <ion-content [fullscreen]="true">
+    <ion-button click="RegisterPushNotifications()">Register</ion-button>
+    <ion-button click="GetDeliveredNotifications()">Notifications</ion-button>
+  
+  </ion-content>
 </ion-content>
