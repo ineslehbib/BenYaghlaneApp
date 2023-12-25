@@ -49,13 +49,13 @@ export class HomePage implements OnInit {
     if (permStatus.receive === 'granted') {
       try {
         await PushNotifications.register();
-      } catch (e) { alert(JSON.stringify(e)) }
+      } catch (e) { alert(JSON.stringify(e)); }
     }
 
   }
-  getDeliveredNotifications = async () = {
-    const notificationList = await PushNotifications.getDeliveredNotifications{
-alert('delivered ')
+  getDeliveredNotifications = async () => {
+    const notificationList = await PushNotifications.getDeliveredNotifications;
+    alert('delivered notifications' + JSON.stringify(notificationList));
 }
 }
-}
+
