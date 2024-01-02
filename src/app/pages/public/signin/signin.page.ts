@@ -35,6 +35,7 @@ export class SigninPage implements OnInit {
 
   // Sign in
   async signIn() {
+    
     this.submit_attempt = true;
 
     if (this.signin_form.valid) {

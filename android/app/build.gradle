@@ -1,12 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-
-  namespace 'com.ionic.starttheme'
-  compileSdkVersion rootProject.ext.compileSdkVersion
-
-  defaultConfig {
-        applicationId "com.ionic.starttheme"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.ionic.BenYaghlane"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -23,11 +20,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-      debug {
-        manifestPlaceholders.cleartextTrafficPermitted ="true"
-      }
     }
-
 }
 
 repositories {
@@ -37,6 +30,7 @@ repositories {
 }
 
 dependencies {
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
@@ -45,7 +39,9 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
-    implementation project(':capacitor-cordova-android-plugins')
+  implementation 'com.google.firebase:firebase-messaging-directboot:23.1.2'
+    implementation 'androidx.work:work-runtime:2.7.0'
+
 }
 
 apply from: 'capacitor.build.gradle'

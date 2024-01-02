@@ -44,11 +44,7 @@ export class PaymentsPage implements OnInit {
       this.content_loaded = true;
     }, 2000);
     this.fetchData()
-
-
-
   }
-
 
   // Filter
   async filter() {

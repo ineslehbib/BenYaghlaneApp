@@ -9,33 +9,21 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <!-- <ion-header>
-    <ion-toolbar class="toolbar-search">
-      <ion-searchbar showCancelButton="focus" placeholder="Recherche"></ion-searchbar>
-    </ion-toolbar>
-  </ion-header> -->
-  <!-- 
-      <ion-content style="font-weight: 600;">
-        <ion-content>
-          <ion-card *ngFor="let article of data">
-            <ion-card-header>
-              {{ article.Description }}
-            </ion-card-header>
-            <ion-card-content>
-              {{ article.Last_Direct_Cost }}
-            </ion-card-content>
-          </ion-card>
-        </ion-content> -->
+
   <ion-grid>
     <ion-row *ngFor="let row of chunkArray(data, 2)">
       <ion-col *ngFor="let article of row">
         <ion-card>
-          <ion-card-header>
+          <div class="promotion-badge">{{ article.Disc___ }}%</div>
+          <ion-card-header style="text-align: center;color:#523614 ;">
             <img
               src={{article.PictureURL}}>
             {{ article.Description }}
           </ion-card-header>
-          <ion-card-content style="text-align: center;color:#523614 ;">
+          <ion-card-content style="text-align: center;color:#523614 ;text-decoration:line-through;">
+            {{ article.Standard_Price }} DT
+          </ion-card-content>
+            <ion-card-content style="text-align: center;color:#523614 ;">
             {{ article.Offer_Price }} DT
           </ion-card-content>
         </ion-card>

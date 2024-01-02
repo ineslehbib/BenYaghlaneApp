@@ -10,7 +10,7 @@
     </ion-title>
   </ion-toolbar>
 
-  <ion-card class="ion-no-margin profile-card" style="text-align: center;">
+  <ion-card class="ion-no-margin profile-card" style="text-align: center;font-color :#523614;">
     <ion-card-content style="text-align: center;">
       <div style="text-align: center !important;">
         <img src="../../../../assets/card-media.png" height="150" width="150">
@@ -22,19 +22,21 @@
           <ion-text><strong>Adhérant : {{nom}}</strong></ion-text>
         </h1>
         <h1>
-          <ion-text><strong>Vous avez : {{total}}</strong></ion-text>
+          <ion-text><strong>Vous avez : {{total}} Points</strong></ion-text>
         </h1>
 
         <!-- <ngx-gauge [type]="'full'" [value]="calculatePercentage()"></ngx-gauge> -->
     </ion-card-content>
+    <br><br>
     <div class="gauge-container">
       <div class="indicator-min">{{ 0 }}</div>
-      <div class="indicator-max">{{ total }}</div>
-      <div class="indicator-value">{{ consomme }} Point</div>
+      <div class="indicator-max">{{ total }} Points</div>
+      <div class="indicator-value">{{ consomme }} </div>
       <div class="gauge-fill" [style.width.%]="fillPercentage"></div>
     </div>
+    <br><br>
   </ion-card>
-
+<br><br>
   <div class="ion-padding">
 
     <!-- <ion-list-header class="ion-list-header-small">
@@ -115,9 +117,6 @@
         </ion-label>
       </ion-item>
     </ion-list> -->
-
-    <hr class="hr-medium">
-
     <ion-list class="list-custom" lines="full" (click)="signOut()">
       <ion-item button detail=false>
         <ion-icon slot="start" name="log-out"></ion-icon>

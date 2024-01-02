@@ -1,8 +1,3 @@
-<!-- <ion-header [translucent]="true">
-
-
-</ion-header> -->
-
 <ion-content id="signup" style="text-align: center;">
   <ion-toolbar>
     <ion-title>
@@ -13,70 +8,44 @@
     </ion-buttons>
   </ion-toolbar>
     <div id="content" class="ion-padding ">
-      <!-- <div class="ion-padding ion-full-height ion-flex ion-flex-center"> -->
-      <!-- <center><ion-img src="../../../../assets/logo.png" style="height: 200px;width: 200px;"></ion-img></center> -->
-      <!-- <div class="logo-container">
-      <h1 class="animate__animated animate__fadeInUp">
-        <ion-text style="color:  #523614 !important;">Inscription</ion-text>
-      </h1>
-      <br>
-      <br>
-    </div> -->
     <form class="form-default" [formGroup]="signup_form" (submit)="signUp()">
       <br>
+      <!-- Other form controls -->
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input type="Nom" autocomplete="off" placeholder="Nom"></ion-input>
+        <ion-input formControlName="Nom" autocomplete="off" placeholder="Nom"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input type="Prénom" autocomplete="off" placeholder="Prénom"></ion-input>
+        <ion-input formControlName="Prénom" autocomplete="off" placeholder="Prénom"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input type="Tel" autocomplete="off" placeholder="Tel"></ion-input>
+        <ion-input formControlName="email" autocomplete="off" placeholder="email"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input type="Adresse" autocomplete="off" placeholder="Adresse"></ion-input>
+        <ion-input formControlName="Tel" autocomplete="off" placeholder="Tel"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input type="Magasin" autocomplete="off" placeholder="Magasin"></ion-input>
+        <ion-input formControlName="Adresse" autocomplete="off" placeholder="Adresse"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input type="Civilité" autocomplete="off" placeholder="Civilité"></ion-input>
+        <ion-input formControlName="Magasin" autocomplete="off" placeholder="Magasin"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
-
-        <ion-input type="Gouvernorat" autocomplete="off" placeholder="Gouvernorat"></ion-input>
+        <ion-input formControlName="Civilité" autocomplete="off" placeholder="Civilité"></ion-input>
         </ion-item>
         <ion-item class="animate__animated animate__fadeInUp">
-        
-          <ion-input formControlName="password" type="password" placeholder="Your password"></ion-input>
-          </ion-item>
-          <ion-button class="ion-margin-top ion-button2" expand="block" size="medium">
-            Enregistrer
+        <ion-input formControlName="Gouvernorat" autocomplete="off" placeholder="Gouvernorat"></ion-input>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp">
+          <ion-input formControlName="password" type="password" autocomplete="off" placeholder="Mot de passe"></ion-input>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp">
+          <ion-input formControlName="password_repeat" type="password" autocomplete="off"
+            placeholder="Répéter la mot de passe"></ion-input>
+        </ion-item>
+        <ion-button class="ion-margin-top ion-button2" expand="block" size="medium" (click)="signUp()">
+          Enregistrer
       </ion-button>
     </form>
-
+    
 </div>
-<!-- </div> -->
 </ion-content>
-<!-- <ion-content>
-  <div style="border-bottom: solid 1px lightgray ; margin: bottom 20px;">
-    <ion-button (click)="createOpenDataBase()">Create/open Database</ion-button>
-    <ion-button (click)="createTable()">Create table</ion-button>
-  </div>
-  <div style="max-width: 200px;margin: auto;">
-    <ion-item>
-      <ion-input [(ngModel)]="book_name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input [(ngModel)]="book_price"></ion-input>
-    </ion-item>
-    <ion-button size="small" (click)="insertData()">Add record </ion-button>
-  </div>
-  <div style="border-top:solid 1px lightgray;">
-    <ion-button (click)="selectData()" style="margin-bottom: 20px;">Display</ion-button>
-  </div>
-  <div *ngFor="let b of bookData;let i=index">
-    <div>book name :{{b.book_name}}</div>
-    <div>book name :{{b.book_price}}</div>
-  </div>
-</ion-content> -->

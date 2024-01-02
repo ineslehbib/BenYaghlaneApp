@@ -1,8 +1,14 @@
 :host {
+  ion-text {
+      color: #523614 !important;
+    }
   ion-item {
     --border-radius: 8px;
     margin-bottom: 8px;
   }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ion-card {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  border-radius: 0 0 25px 25px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 
   .form-default {
     margin-top: 20px;
@@ -14,17 +20,20 @@
         ion-header {
           background: #eac24d !important;
         }
+                                ion-card {
+                                  background: #eac24d !important;
+                                }
     
         ion-toolbar {
           --background: #eac24d !important;
         }
     
         body {
-          --background: #eac24d !important;
+          --background: #f3f3f3 !important;
         }
     
         ion-content {
-          --background: #eac24d !important;
+          --background: #f3f3f3 !important;
         }
     
     

@@ -202,7 +202,7 @@ export class ChartsPage implements OnInit {
   constructor(
     private helperService: HelperService, private Service: DataService
   ) {
-    this.qrCode = '9800102200305';
+    this.qrCode = sessionStorage.getItem('No');
     console.log(sessionStorage.getItem('No'));
     // Service.soapCall();
   }
@@ -211,9 +211,6 @@ export class ChartsPage implements OnInit {
   ngOnInit() {
     // Create bar chart
     this.createBarChart();
-
-
-
   }
 
   ionViewDidEnter() {
