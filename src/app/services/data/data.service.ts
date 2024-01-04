@@ -13,8 +13,7 @@ export class DataService {
   apiUrl: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
   login: string = "Ines";
   password: string = "Ines@2025";
-
-
+  APILoyalty: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_récuppoint?company=GRANDE EPICERIE BEN YAGHLANE";
   chVal: String;
   choosenNumberValue: String;
   constructor() {
@@ -40,5 +39,5 @@ export class DataService {
       throw error; // Rethrow the error to be caught by the caller
     }
   };
-
+ 
 }

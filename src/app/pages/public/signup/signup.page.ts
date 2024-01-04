@@ -75,7 +75,7 @@ export class SignupPage implements OnInit {
           // Transform the form data to the desired format
           const userData = {
             inputJson: JSON.stringify({
-              codeClub: 'ECHRA VIP',
+              codeClub: 'EL ECHRA',
               Name: `${formData.Prénom} ${formData.Nom}`,
               Password: formData.password,
               Description: formData.Description, // Replace with the actual form control

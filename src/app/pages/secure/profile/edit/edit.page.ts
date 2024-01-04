@@ -13,6 +13,8 @@ export class EditPage implements OnInit {
 
   edit_profile_form: FormGroup;
   submit_attempt: boolean = false;
+  name: any;
+  nom: any; 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,7 +24,7 @@ export class EditPage implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.name = sessionStorage.getItem('Main_Contact_Name');
     // Setup form
     this.edit_profile_form = this.formBuilder.group({
       name_first: ['', Validators.required],

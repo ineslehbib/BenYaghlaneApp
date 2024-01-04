@@ -13,6 +13,7 @@ export class AuthService {
   login: string = "Ines";
   password: string = "Ines@2025";
   APICreation: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_AccountInsertFromJson?company=GRANDE EPICERIE BEN YAGHLANE";
+  APILoyalty: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_récuppoint?company=GRANDE EPICERIE BEN YAGHLANE";
   constructor(
     private router: Router
   ) { }
@@ -75,6 +76,7 @@ export class AuthService {
         sessionStorage.setItem('Main_Contact_Name', JSON.stringify(response.data.value[0].Main_Contact_Name));
         sessionStorage.setItem('Issued_Award_Points', JSON.stringify(response.data.value[0].Issued_Award_Points));
         sessionStorage.setItem('Unprocessed_Points', JSON.stringify(response.data.value[0].Unprocessed_Points));
+        sessionStorage.setItem('Balance', JSON.stringify(response.data.value[0].Balance));
         return true;
       } else {
         return false;
@@ -105,7 +107,7 @@ export class AuthService {
         return true;
       } else {
         // Handle signup error
-        console.error('Signup failed:', response.data.message);
+        console.error('Signup failed:', response.data.value);
         return false;
       }
     } catch (error) {
@@ -114,7 +116,33 @@ export class AuthService {
     }
   }
 
+  async getFidelity(AccountNo: any): Promise<Boolean> {
+    try {
+      const response = await CapacitorHttp.request({
+        method: 'POST',
 
+        url: this.APILoyalty, // Replace with your sign-up endpoint
+        data: AccountNo,
+        headers: {
+          'Content-Type': 'application/json',  // Fix the typo here
+          Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
+        }
+      });
+      if (response.status === 200) {
+        // Handle successful signup response
+        console.log('Signup successful:', response.data);
+        sessionStorage.setItem('Validity', JSON.stringify(response.data.value));
+        return true;
+      } else {
+        // Handle signup error
+        console.error('Signup failed:', response.data.value);
+        return false;
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      throw error; // Rethrow the error to be caught by the caller
+    }
+  }
   // Sign out
   async signOut() {
     // ...
