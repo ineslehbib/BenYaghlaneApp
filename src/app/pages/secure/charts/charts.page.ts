@@ -202,8 +202,9 @@ export class ChartsPage implements OnInit {
   constructor(
     private helperService: HelperService, private Service: DataService
   ) {
-    this.qrCode = sessionStorage.getItem('No');
-    console.log(sessionStorage.getItem('No'));
+    this.qrCode = sessionStorage.getItem('Carte') !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
+  
+    console.log(sessionStorage.getItem('Carte'));
     // Service.soapCall();
   }
 

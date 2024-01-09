@@ -9,11 +9,11 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class SettingsPage implements OnInit {
   no: any;
   nom: any;
-  total: any;
-  consomme: any;
+  total: any = '0';
+  consomme: any = '0';
   fillPercentage: number = 0;
-  point: any;
-  validity: any;
+  point: any = '0';
+  validity: any = '0';
   lastDayOfCurrentMonth: any;
 
   constructor(
@@ -22,11 +22,13 @@ export class SettingsPage implements OnInit {
     // Exemple d'utilisation
     this.lastDayOfCurrentMonth = this.getLastDayOfCurrentMonth();
     console.log(this.lastDayOfCurrentMonth);
-    this.no = sessionStorage.getItem('No');
-    this.nom = sessionStorage.getItem('Main_Contact_Name');
-    this.total = sessionStorage.getItem('Balance');
+    // Récupérer la valeur depuis sessionStorage et remplacer les guillemets doubles par des espaces si la valeur n'est pas null
+    this.no = sessionStorage.getItem('No') !== null ? sessionStorage.getItem('No').replace(/"/g, ' ') : null;
+    this.nom = sessionStorage.getItem('Main_Contact_Name') !== null ? sessionStorage.getItem('Main_Contact_Name').replace(/"/g, ' ') : null;
+    this.total = sessionStorage.getItem('Balance') !== null ? sessionStorage.getItem('Balance').replace(/"/g, ' ') : null;
     this.consomme = sessionStorage.getItem('Unprocessed_Points');
-    this.validity = sessionStorage.getItem('Validity');
+    this.validity = sessionStorage.getItem('Validity') !== null ? sessionStorage.getItem('Validity').replace(/"/g, ' ') : null;
+
     const userData = {
       inputJson: JSON.stringify({
         input: this.no,

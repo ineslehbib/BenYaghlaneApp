@@ -1,15 +1,16 @@
 <ion-content id="signup" style="text-align: center;">
   <ion-toolbar>
-    <ion-title>
-      Inscription
-    </ion-title>
     <ion-buttons slot="start">
       <ion-back-button style="color: #523614 ;font-weight: 600;" defaultHref="/signin" text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
     <div id="content" class="ion-padding ">
     <form class="form-default" [formGroup]="signup_form" (submit)="signUp()">
+    <ion-title>
+      Inscription
+    </ion-title>
       <br>
+
       <!-- Other form controls -->
       <ion-item class="animate__animated animate__fadeInUp">
         <ion-input formControlName="Nom" autocomplete="off" placeholder="Nom"></ion-input>
@@ -18,22 +19,42 @@
         <ion-input formControlName="Prénom" autocomplete="off" placeholder="Prénom"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input formControlName="email" autocomplete="off" placeholder="email"></ion-input>
+        <ion-label>Genre</ion-label>
+        <ion-select formControlName="Civilite" placeholder="Sélectionnez le genre">
+          <ion-select-option *ngFor="let Civilite of civilities" [value]="Civilite"> {{ Civilite === 1 ? 'Homme' : 'Femme'
+            }}</ion-select-option>
+        </ion-select>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp">
+          <ion-label>Tranche d'âge</ion-label>
+          <ion-select formControlName="tranche" placeholder="Sélectionnez la tranche d'âge">
+            <ion-select-option *ngFor="let tranche of tranches" [value]="tranche">
+              {{ ageRanges[tranche] || '' }}
+            </ion-select-option>
+          </ion-select>
+          </ion-item>
+          <ion-item class="animate__animated animate__fadeInUp">
+        <ion-input formControlName="email" autocomplete="off" placeholder="Email"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input formControlName="Tel" autocomplete="off" placeholder="Tel"></ion-input>
+        <ion-input formControlName="Tel" autocomplete="off" placeholder="Téléphone"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
         <ion-input formControlName="Adresse" autocomplete="off" placeholder="Adresse"></ion-input>
-      </ion-item>
-      <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input formControlName="Magasin" autocomplete="off" placeholder="Magasin"></ion-input>
-      </ion-item>
-      <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input formControlName="Civilité" autocomplete="off" placeholder="Civilité"></ion-input>
         </ion-item>
         <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input formControlName="Gouvernorat" autocomplete="off" placeholder="Gouvernorat"></ion-input>
+        <ion-label>Magasin</ion-label>
+        <ion-select formControlName="Magasin" placeholder="Sélectionnez un magasin">
+          <ion-select-option *ngFor="let magasin of magasins" [value]="magasin.No_">{{ magasin.Name }}</ion-select-option>
+        </ion-select>
+        </ion-item>
+        <ion-item class="animate__animated animate__fadeInUp">
+          <ion-label>Gouvernorat</ion-label>
+          <ion-select formControlName="Gouvernorat" placeholder="Sélectionnez le gouvernorat">
+            <ion-select-option *ngFor="let gouvernorat of gouvernorats" [value]="gouvernorat">
+              {{ gouvernorat }}
+            </ion-select-option>
+          </ion-select>
         </ion-item>
         <ion-item class="animate__animated animate__fadeInUp">
           <ion-input formControlName="password" type="password" autocomplete="off" placeholder="Mot de passe"></ion-input>

@@ -28,28 +28,44 @@ export class SigninPage implements OnInit {
   ngOnInit() {
     // Setup form
     this.signin_form = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.minLength(8), Validators.required])],
-      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      email: ['', Validators.compose([Validators.minLength(3), Validators.required])],
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
+      isPhoneMode: [false], 
     });
   }
-
+  private isCardNumberMode(input: string): boolean {
+    // Implement your logic to check if the input is a card number
+    // For example, you can check if it's a numeric value with a certain length
+    return !isNaN(Number(input)) && input.length === 10;
+  }
   // Sign in
   async signIn() {
     
     this.submit_attempt = true;
+    this.signin_form.get('isPhoneMode').valueChanges.subscribe(value => {
+      const label = value ? 'Numéro de téléphone' : 'Numéro de la carte';
+      this.signin_form.get('email').setValidators(value ? null : Validators.required);
+      this.signin_form.get('email').updateValueAndValidity();
+      this.signin_form.get('email').setValue(''); // Effacez la valeur actuelle
+      this.signin_form.get('email').setErrors(null); // Effacez les erreurs
+      this.signin_form.get('email').markAsPristine(); // Marquez comme "non modifié"
+      this.signin_form.get('email').markAsUntouched(); // Marquez comme "non touché"
+    });
 
     if (this.signin_form.valid) {
       const email = this.signin_form.value.email;
       const password = this.signin_form.value.password;
-
+      const isPhoneMode = this.signin_form.value.isPhoneMode;
       try {
         const loading = await this.loadingController.create({
           message: 'Authentification ...',
         });
         await loading.present();
 
-        const success = await this.authService.signIn(email, password);
-
+        const success = isPhoneMode
+          ? await this.authService.signInPhone(email, password)
+          :
+          await this.authService.signIn(email, password);
         await loading.dismiss();
 
         if (success) {
@@ -65,7 +81,9 @@ export class SigninPage implements OnInit {
 
         console.error('Error signing in:', error);
       }
+
     }
+
   }
 }
 

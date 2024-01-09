@@ -36,7 +36,34 @@ export class AuthService {
     try {
       const response = await CapacitorHttp.request({
         method: 'GET',
-        url: `${this.apiUrl}/UsersList?$filter=No eq '${email}' `,
+        url: `${this.apiUrl}/UsersList?$filter=Carte eq '${email}' `,
+        headers: {
+          Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
+        }
+      });
+
+      if (response.status === 200 && response.data.value.length > 0) {
+        // Simulate setting the user session in local storage or cookies
+        console.log(JSON.stringify(response.data.value[0]));
+        sessionStorage.setItem('No', JSON.stringify(response.data.value[0].No));
+        sessionStorage.setItem('Carte', JSON.stringify(response.data.value[0].Carte));
+        sessionStorage.setItem('Main_Contact_Name', JSON.stringify(response.data.value[0].Main_Contact_Name));
+        sessionStorage.setItem('Issued_Award_Points', JSON.stringify(response.data.value[0].Issued_Award_Points));
+        sessionStorage.setItem('Unprocessed_Points', JSON.stringify(response.data.value[0].Unprocessed_Points));
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error; // Rethrow the error to be caught by the caller
+    }
+  }
+  async signInPhone(phone: string, password: string): Promise<boolean> {
+    try {
+      const response = await CapacitorHttp.request({
+        method: 'GET',
+        url: `${this.apiUrl}/UsersList?$filter=Phone eq '${phone}' and Password eq '${password}'`,
         headers: {
           Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
         }
@@ -49,6 +76,10 @@ export class AuthService {
         sessionStorage.setItem('Main_Contact_Name', JSON.stringify(response.data.value[0].Main_Contact_Name));
         sessionStorage.setItem('Issued_Award_Points', JSON.stringify(response.data.value[0].Issued_Award_Points));
         sessionStorage.setItem('Unprocessed_Points', JSON.stringify(response.data.value[0].Unprocessed_Points));
+        sessionStorage.setItem('Balance', JSON.stringify(response.data.value[0].Balance));
+        sessionStorage.setItem('token', JSON.stringify(response.data.value[0]['@odata.etag']));
+        sessionStorage.setItem('user', JSON.stringify(response.data.value[0]));
+        sessionStorage.setItem('Carte', JSON.stringify(response.data.value[0].Carte));
         return true;
       } else {
         return false;
@@ -63,7 +94,7 @@ export class AuthService {
     try {
       const response = await CapacitorHttp.request({
         method: 'GET',
-        url: `${this.apiUrl}/UsersList?$filter=No eq '${email}' and Password eq '${password}'`,
+        url: `${this.apiUrl}/UsersList?$filter=Carte eq '${email}' and Password eq '${password}'`,
         headers: {
           Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
         }
@@ -77,6 +108,9 @@ export class AuthService {
         sessionStorage.setItem('Issued_Award_Points', JSON.stringify(response.data.value[0].Issued_Award_Points));
         sessionStorage.setItem('Unprocessed_Points', JSON.stringify(response.data.value[0].Unprocessed_Points));
         sessionStorage.setItem('Balance', JSON.stringify(response.data.value[0].Balance));
+        sessionStorage.setItem('token', JSON.stringify(response.data.value[0]['@odata.etag']));
+        sessionStorage.setItem('user', JSON.stringify(response.data.value[0]));
+        sessionStorage.setItem('Carte', JSON.stringify(response.data.value[0].Carte));
         return true;
       } else {
         return false;
@@ -115,6 +149,38 @@ export class AuthService {
       throw error; // Rethrow the error to be caught by the caller
     }
   }
+  async checkPhoneUnique(phoneNumber: string): Promise<boolean> {
+    try {
+      const response = await CapacitorHttp.request({
+        method: 'GET',
+        url: `${this.apiUrl}/UsersList?$filter=Phone eq '${phoneNumber}'`,  // Ajout de $top=1 pour ne récupérer qu'un élément
+        headers: {
+          Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
+        }
+      });
+
+      console.log('Response Status:', response.status);
+
+      if (response.status === 200 && response.data.value !== undefined) {
+        console.log('Data:', response.data);
+
+        // Vérifiez si le tableau value existe et a une longueur non nulle
+        return response.data.value.length === 0;
+      }
+
+      return false;
+
+      console.log('Request failed with status:', response.status);
+      return false;
+    } catch (error) {
+      console.error('Error checking phone uniqueness:', error);
+      throw error;
+    }
+  }
+
+
+
+
 
   async getFidelity(AccountNo: any): Promise<Boolean> {
     try {
@@ -151,6 +217,8 @@ export class AuthService {
 
     // Navigate to sign-in
     this.router.navigateByUrl('/signin');
-    localStorage.delete();
+    sessionStorage.clear();
+    localStorage.clear();
   }
+
 }
