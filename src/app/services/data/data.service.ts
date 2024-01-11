@@ -10,12 +10,12 @@ import { CapacitorHttp, HttpResponse } from '@capacitor/core';
   providedIn: 'root'
 })
 export class DataService {
-  apiUrl: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
-  login: string = "Ines";
-  password: string = "Ines@2025";
-  APILoyalty: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_récuppoint?company=GRANDE EPICERIE BEN YAGHLANE";
-  APIPassword: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_ChangerMotDepasse?company=GRANDE EPICERIE BEN YAGHLANE";
-  APIMagasin: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/Magasin"
+  apiUrl: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('ge')";
+  login: string = "MOBILE";
+  password: string = "Delt@S0ft";
+  APILoyalty: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_récuppoint?company=ge";
+  APIPassword: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_ChangerMotDepasse?company=ge";
+  APIMagasin: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('ge')/Magasin"
   chVal: String;
   choosenNumberValue: String;
   constructor() {

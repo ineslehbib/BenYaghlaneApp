@@ -202,7 +202,8 @@ export class ChartsPage implements OnInit {
   constructor(
     private helperService: HelperService, private Service: DataService
   ) {
-    this.qrCode = sessionStorage.getItem('Carte') !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
+    this.qrCode = sessionStorage.getItem('Carte');
+    // !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
   
     console.log(sessionStorage.getItem('Carte'));
     // Service.soapCall();
@@ -212,6 +213,10 @@ export class ChartsPage implements OnInit {
   ngOnInit() {
     // Create bar chart
     this.createBarChart();
+    this.qrCode = sessionStorage.getItem('Carte').replace(/"/g, '');
+    // !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
+
+    console.log(sessionStorage.getItem('Carte'));
   }
 
   ionViewDidEnter() {

@@ -9,34 +9,41 @@ import { CapacitorHttp, HttpResponse } from '@capacitor/core';
 
 export class AuthService {
 
-  apiUrl: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
-  login: string = "Ines";
-  password: string = "Ines@2025";
-  APICreation: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_AccountInsertFromJson?company=GRANDE EPICERIE BEN YAGHLANE";
-  APILoyalty: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_récuppoint?company=GRANDE EPICERIE BEN YAGHLANE";
+  apiUrl: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('ge')";
+  login: string = "MOBILE";
+  password: string = "Delt@S0ft";
+  APICreation: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_AccountInsertFromJson?company=ge";
+  APILoyalty: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_récuppoint?company=ge";
   constructor(
     private router: Router
   ) { }
 
   // Get user session
   async getSession() {
-    // ...
-    // put auth session here
-    // ...
+    try {
+      // Retrieve the user session from sessionStorage
+      const userSessionString = sessionStorage.getItem('No');
 
-    // Sample only - remove this after real authentication / session
-    let session = {
-      email: 'john.doe@mail.com'
+      // Check if user session exists
+      if (userSessionString) {
+        // Parse the JSON string to get the user session object
+        const userSession = JSON.parse(userSessionString);
+        return userSession;
+      } else {
+        // If no user session is found, return null
+        return null;
+      }
+    } catch (error) {
+      console.error('Error retrieving user session:', error);
+      throw error;
     }
+  }
 
-    return false;
-    // return session;
-  }// Sign in
   async setSession(email: string): Promise<boolean> {
     try {
       const response = await CapacitorHttp.request({
         method: 'GET',
-        url: `${this.apiUrl}/UsersList?$filter=Carte eq '${email}' `,
+        url: `${this.apiUrl}/UsersList?$filter=No eq '${email}' `,
         headers: {
           Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
         }
@@ -137,7 +144,7 @@ export class AuthService {
       if (response.status === 200) {
         // Handle successful signup response
         console.log('Signup successful:', response.data);
-        this.setSession(response.data.value);
+        await this.setSession(response.data.value);
         return true;
       } else {
         // Handle signup error

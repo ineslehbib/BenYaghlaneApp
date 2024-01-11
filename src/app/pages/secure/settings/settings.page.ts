@@ -15,7 +15,7 @@ export class SettingsPage implements OnInit {
   point: any = '0';
   validity: any = '0';
   lastDayOfCurrentMonth: any;
-
+  carte: any;
   constructor(
     private authService: AuthService
   ) {
@@ -24,10 +24,11 @@ export class SettingsPage implements OnInit {
     console.log(this.lastDayOfCurrentMonth);
     // Récupérer la valeur depuis sessionStorage et remplacer les guillemets doubles par des espaces si la valeur n'est pas null
     this.no = sessionStorage.getItem('No') !== null ? sessionStorage.getItem('No').replace(/"/g, ' ') : null;
+    this.carte = sessionStorage.getItem('Carte') !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
     this.nom = sessionStorage.getItem('Main_Contact_Name') !== null ? sessionStorage.getItem('Main_Contact_Name').replace(/"/g, ' ') : null;
-    this.total = sessionStorage.getItem('Balance') !== null ? sessionStorage.getItem('Balance').replace(/"/g, ' ') : null;
-    this.consomme = sessionStorage.getItem('Unprocessed_Points');
-    this.validity = sessionStorage.getItem('Validity') !== null ? sessionStorage.getItem('Validity').replace(/"/g, ' ') : null;
+    this.total = sessionStorage.getItem('Balance') !== null ? sessionStorage.getItem('Balance').replace(/"/g, ' ') : '0';
+    this.consomme = sessionStorage.getItem('Unprocessed_Points') !== null ? sessionStorage.getItem('Unprocessed_Points') : '0';
+    this.validity = sessionStorage.getItem('Validity') !== null ? sessionStorage.getItem('Validity').replace(/"/g, ' ') : '0';
 
     const userData = {
       inputJson: JSON.stringify({
@@ -62,7 +63,13 @@ export class SettingsPage implements OnInit {
 
   ngOnInit() {
 
-
+    const userData = {
+      inputJson: JSON.stringify({
+        input: this.no,
+      }),
+    };
+    const success = this.authService.getFidelity(userData);
+    console.log(this.authService.getFidelity(this.no));
     this.calculateFillPercentage();
 
   }

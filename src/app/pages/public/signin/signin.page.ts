@@ -73,11 +73,11 @@ export class SigninPage implements OnInit {
           this.router.navigate(['/home']);
         } else {
           // Display an error message to the user
-          this.toastService.presentToast('Error', 'Please input email and password', 'top', 'danger', 2000);
+          this.toastService.presentToast('Erreur', 'Numéro ou mot de passe invalide', 'top', 'danger', 2000);
         }
       } catch (error) {
         // Handle and display the error to the user
-        this.toastService.presentToast('Error', 'Error signing in. Please try again.', 'top', 'danger', 2000);
+        this.toastService.presentToast('Erreur', 'Erreur de connexion. Veuillez réessayer', 'top', 'danger', 2000);
 
         console.error('Error signing in:', error);
       }
