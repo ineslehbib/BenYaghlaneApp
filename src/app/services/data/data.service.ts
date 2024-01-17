@@ -13,7 +13,7 @@ export class DataService {
   apiUrl: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
   login: string = "MOBILE";
   password: string = "Delt@S0ft";
-  APILoyalty: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_récuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APILoyalty: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_recuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
   APIPassword: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_ChangerMotDepasse?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
   APICon: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_Connection?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
 
