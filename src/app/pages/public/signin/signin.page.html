@@ -1,13 +1,9 @@
-<ion-content>
-
-  <div class="ion-padding ion-full-height ion-flex ion-flex-center" style="text-align: center !important;">
-  <ion-img src="../../../../assets/logo.png" style="height: 300px;width: 350px;"></ion-img>
-
+<ion-content class="ion-padding ion-full-height ion-flex ion-flex-center" style="text-align: center !important;">
+  <ion-img src="../../../../assets/logo.png" style="height: 300px; width: 350px;margin:auto"
+    class="ion-align-self-center"></ion-img>
     <!-- Login form -->
   <div id="login-content">
-
         <form class="form-default" [formGroup]="signin_form" (submit)="signIn()">
-      
           <ion-item class="animate__animated animate__fadeInUp">
             <ion-label position="floating">
               <ion-icon name="card-outline"></ion-icon>
@@ -29,14 +25,7 @@
               color="light" fill="clear">
               Accéder
             </ion-button>
-                        <!-- <ion-button class="ion-button-small ion-margin-top-medium ion-button1" routerLink="/home" expand="block" size="medium"
-                          color="light" fill="clear">
-                          Accéder
-                        </ion-button> -->
-            <!-- <ion-button color="light" fill="clear" expand="block" class="ion-button-small ion-margin-top-medium"
-            routerLink="/password-reset">
-            Forgot password?
-          </ion-button> -->
+      
           <br><br>
           <ion-item class="animate__animated animate__fadeInUp"
             style="text-align: center;background-color: transparent !important;">
@@ -52,5 +41,5 @@
 
     </div>
 
-  </div>
+
 </ion-content>

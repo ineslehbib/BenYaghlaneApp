@@ -4,6 +4,7 @@ import { PushNotifications } from '@capacitor/push-notifications';
 import { json } from 'stream/consumers';
 import { Platform } from '@ionic/angular';
 import { FcmService } from 'src/app/services/notification/notif.service';
+import { SafeSubscriber } from 'rxjs/internal/Subscriber';
 
 
 @Component({
@@ -15,58 +16,31 @@ export class HomePage implements OnInit {
 
   content_loaded: boolean = false;
 
-  constructor(service: DataService, private fcm: FcmService,
+  constructor(private Data: DataService, private fcm: FcmService,
     private platform: Platform) {
-
   }
-
+  Account: any; 
   ngOnInit() {
-    // this.addListeners()
-    this.platform.ready().then(() => {
-      this.fcm.initPush();
-    }).catch(e => {
-      console.log('error fcm: ', e);
-    });
-    // Fake timeout
     setTimeout(() => {
-      this.content_loaded = true;
-    }, 2000);
-  }
-  // addListeners = async () => {
-  //   await PushNotifications.addListener('registration', token => {
-  //     alert('Registration token' + token.value)
-  //   });
-  //   await PushNotifications.addListener('registrationError', err => {
-  //     alert('Registration error' + err.error);
-  //   });
-  //   await PushNotifications.addListener('pushNotificationReceived', notification => {
-  //     alert('Push notification recieved:' + JSON.stringify(notification));
-  //   });
-  //   await PushNotifications.addListener('pushNotificationActionPerformed', notification => {
-  //     alert('Push notification action performed:' + notification.actionId + notification);
-  //   });
-  // }
-  // async registerPushNotification() {
-  //   let permStatus = await PushNotifications.checkPermissions();
-  //   alert(JSON.stringify(permStatus));
-  //   if (permStatus.receive === 'prompt') {
-  //     permStatus = await PushNotifications.requestPermissions();
-  //   }
-  //   if (permStatus.receive !== 'granted') {
-  //     alert('User denied permission');
-  //   }
-  //   if (permStatus.receive === 'granted') {
-  //     try {
-  //       await PushNotifications.register();
-  //     } catch (e) { alert(JSON.stringify(e)); }
-  //   }
-  //   await PushNotifications.register();
-  // }
+      var userData = {
+        inputJson: JSON.stringify({
+          CompteNo: sessionStorage.getItem('No').replace(/"/g, ''),
+        }),
+      };
 
-  // getDeliveredNotifications = async () => {
-  //   const notificationList = await PushNotifications.getDeliveredNotifications;
-  //   alert('delivered notifications' + JSON.stringify(notificationList));
-  // }
+      // Add your logic here to update the password
+      this.Data.Connection(userData).then((success) => {
+        if (success) {
+          // Display a message if the password change is successful
+          console.log("Changed");
+        } else {
+          // Display an error message if the password change fails
+          console.error('Error');
+        }
+      });
+    }, 2000); // Delay of 2000 milliseconds (2 seconds)
+
+  }
 
 } 
 

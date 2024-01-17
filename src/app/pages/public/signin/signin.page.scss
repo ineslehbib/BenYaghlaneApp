@@ -1,44 +1,50 @@
 :host {
-#login{
-  background: url("../../../../assets/background.png") no-repeat center center !important;
-}
-    .logo-container {
-        text-align: center;
-    }
-    h1 {
-      font-size: 32px;
-      font-weight: 800;
-    }
+  ion-content {
+    --text-align: center !important;
+  }
 
-    p {
-      margin-bottom: 42px;
-    }
- #login-content {
-   background-color: #eac24d;
-  height: 60vh;
+  #login {
+    background: url("../../../../assets/background.png") no-repeat center center !important;
+  }
+
+  .logo-container {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+  }
+
+  p {
+    margin-bottom: 42px;
+  }
+
+  #login-content {
+    background-color: #eac24d;
+    height: 60vh;
     width: 100%;
-right: 0;
-  left: 0;
-  bottom: 0;
-   position: fixed;
-  border-top-right-radius: 46px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    border-top-right-radius: 46px;
     border-top-left-radius: 46px;
     padding-top: 100px;
+    text-align: center;
   }
-  
+
   form {
     padding-left: 20px;
     padding-right: 20px;
   }
-  
+
   ion-item {
     border-radius: 15px;
   }
-  
+
   .ion-button1 {
     background-color: rgba(6, 186, 77, 255) !important;
     border-radius: 15px;
+  }
 }
-
-}
-                          
