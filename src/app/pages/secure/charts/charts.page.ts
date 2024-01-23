@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartOptions, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { HelperService } from 'src/app/services/helper/helper.service';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
   selector: 'app-charts',
@@ -197,14 +198,33 @@ export class ChartsPage implements OnInit {
   public polarAreaChartType: ChartType = 'polarArea';
 
   content_loaded: boolean = false;
-
+  qrCode: any;
+  Nouvelle: any;
+  Ancienne: any;
   constructor(
-    private helperService: HelperService
-  ) { }
+    private helperService: HelperService, private Service: DataService
+  ) {
 
+    this.qrCode = sessionStorage.getItem('Carte');
+    // !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
+  
+    console.log(sessionStorage.getItem('Carte'));
+    // Service.soapCall();
+  }
+
+  data: any;
   ngOnInit() {
     // Create bar chart
     this.createBarChart();
+    this.Nouvelle = sessionStorage.getItem('Nouvelle').replace(/"/g, '');
+    this.Ancienne = sessionStorage.getItem('Carte').replace(/"/g, '');
+    if (this.Nouvelle != '') {
+      this.qrCode = this.Nouvelle;
+    } else {
+      this.qrCode = this.Ancienne;
+    }
+    // !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
+    console.log(sessionStorage.getItem('Carte'));
   }
 
   ionViewDidEnter() {
@@ -247,4 +267,6 @@ export class ChartsPage implements OnInit {
       }
     ];
   }
+
+
 }

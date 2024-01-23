@@ -3,17 +3,26 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { Capacitor } from '@capacitor/core';
 import { Platform } from '@ionic/angular';
+import { FcmService } from '../app/services/notification/notif.service'; 
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
+
 })
 export class AppComponent {
 
   constructor(
+    private fcm: FcmService,
     private platform: Platform
   ) {
+    this.platform.ready().then(() => {
+      this.fcm.initPush();
+    }).catch(e => {
+      console.log('error fcm: ', e);
+    });
+
     this.initializeApp();
   }
 

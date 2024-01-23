@@ -1,59 +1,45 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="dark">
-    <ion-buttons slot="end">
-      <ion-button color="secondary" routerLink="/signup">
-        Sign up
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-  <div class="ion-padding ion-full-height ion-flex ion-flex-center">
-
-    <div class="logo-container">
-      <h1 class="animate__animated animate__fadeInUp">
-        <ion-text color="light">Sign In</ion-text>
-      </h1>
-      <p class="animate__animated animate__fadeInUp">
-        <ion-text color="secondary">Login to your account.</ion-text>
-      </p>
-    </div>
-
+<ion-content class="ion-padding ion-full-height ion-flex ion-flex-center" style="text-align: center !important;">
+  <ion-img src="../../../../assets/logo.png" style="height: 300px; width: 350px;margin:auto"
+    class="ion-align-self-center"></ion-img>
     <!-- Login form -->
-    <form class="form-default" [formGroup]="signin_form" (submit)="signIn()">
-      <ion-item color="dark" class="animate__animated animate__fadeInUp">
-        <ion-label position="floating">
-          <ion-icon name="mail" item-start></ion-icon>
-          Email
-        </ion-label>
-        <ion-input color="secondary" type="email" formControlName="email"></ion-input>
-      </ion-item>
-
-      <ion-item color="dark" class="animate__animated animate__fadeInUp">
-        <ion-label position="floating">
-          <ion-icon name="lock-closed-outline"></ion-icon>
-          Password
-        </ion-label>
-        <ion-input color="secondary" formControlName="password" type="password" placeholder="Your password"></ion-input>
-      </ion-item>
-
-      <ion-button class="ion-margin-top" type="submit" expand="block" size="large" color="secondary">
-        Sign in
-      </ion-button>
-
-      <ion-button color="light" fill="clear" expand="block" class="ion-button-small ion-margin-top-medium" routerLink="/password-reset">
-        Forgot password?
-      </ion-button>
-    </form>
-
-    <div class="ion-text-center ion-margin-top">
-      <ion-text color="medium">
-        <small>&copy;{{current_year}} Firmino.dev</small>
+  <div id="login-content">
+        <form class="form-default" [formGroup]="signin_form" (submit)="signIn()">
+          <ion-item class="animate__animated animate__fadeInUp">
+            <ion-label position="floating">
+              <ion-icon name="card-outline"></ion-icon>
+              {{ signin_form.get('isPhoneMode').value ? 'Numéro de téléphone' : 'Numéro de la carte' }}
+            </ion-label>
+            
+            <ion-input type="Integer" formControlName="email"></ion-input>
+            </ion-item>
+            <br>
+            <ion-item class="animate__animated animate__fadeInUp">
+              <ion-label position="floating">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+              Mot de passe
+              </ion-label>
+              <ion-input color="secondary" formControlName="password" type="password" placeholder="Mot de passe"></ion-input>
+            </ion-item>
+            <br>
+            <ion-button class="ion-button-small ion-margin-top-medium ion-button1" type="submit" expand="block" size="medium"
+              color="light" fill="clear">
+              Accéder
+            </ion-button>
+      
+          <br><br>
+          <ion-item class="animate__animated animate__fadeInUp"
+            style="text-align: center;background-color: transparent !important;">
+            <ion-label>Utiliser numéro de telephone</ion-label>
+            <ion-checkbox formControlName="isPhoneMode"></ion-checkbox>
+          </ion-item>
+          </form>
+              <div class="ion-text-center ion-margin-top">
+      <ion-text color="light">
+        <small>Deltasoft International</small>
       </ion-text>
     </div>
 
-  </div>
+    </div>
+
 
 </ion-content>

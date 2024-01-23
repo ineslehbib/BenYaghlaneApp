@@ -1,27 +1,50 @@
 :host {
-  body {
-    background-color: var(--ion-color-dark);
-  }
-
   ion-content {
-      --background: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+    --text-align: center !important;
   }
 
-  ion-item {
-    --border-radius: 8px;
-    margin-bottom: 8px;
+  #login {
+    background: url("../../../../assets/background.png") no-repeat center center !important;
   }
 
   .logo-container {
     text-align: center;
+  }
 
-    h1 {
-      font-size: 32px;
-      font-weight: 800;
-    }
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+  }
 
-    p {
-      margin-bottom: 42px;
-    }
+  p {
+    margin-bottom: 42px;
+  }
+
+  #login-content {
+    background-color: #eac24d;
+    height: 60vh;
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    border-top-right-radius: 46px;
+    border-top-left-radius: 46px;
+    padding-top: 100px;
+    text-align: center;
+  }
+
+  form {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  ion-item {
+    border-radius: 15px;
+  }
+
+  .ion-button1 {
+    background-color: rgba(6, 186, 77, 255) !important;
+    border-radius: 15px;
   }
 }

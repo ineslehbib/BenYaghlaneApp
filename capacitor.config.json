@@ -1,7 +1,21 @@
 {
-	"appId": "com.ionic.starttheme",
-	"appName": "Ionic Start Theme",
+	"appId": "com.ionic.BenYaghlane",
+	"appName": "Ben Yaghlane",
 	"webDir": "www",
 	"bundledWebRuntime": false,
-	"ios": { "scheme": "Ionic Start Theme" }
+	"ios": {
+		"scheme": "Ben Yaghlane"
+	},
+	"CapacitorHttp": {
+      "enabled": true
+	},
+	"plugins": {
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		}
+	}
 }
