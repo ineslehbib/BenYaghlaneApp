@@ -49,19 +49,20 @@ export class SignupPage implements OnInit {
     'Ariana',
     'Tunis',
     'Ben Arous',
-    'Béja',
+    'Manouba',
+    'Beja',
     'Bizerte',
     'Nabeul',
-    'Gabès',
+    'Gabes',
     'Gafsa',
     'Jendouba',
     'Kairouan',
     'Kasserine',
-    'Kébili',
-    'Le Kef',
+    'Kebili',
+    'Kef',
     'Mahdia',
-    'Manouba',
-    'Médenine',
+
+    'Medenine',
     'Monastir',
 
     'Sfax',
@@ -182,6 +183,7 @@ export class SignupPage implements OnInit {
             this.userData = {
               inputJson: JSON.stringify({
                 CompteNo: sessionStorage.getItem('No').replace(/"/g, ''),
+                ContactNo: sessionStorage.getItem('Contact').replace(/"/g, ''),
               }),
             };
             // Ajoutez ici la logique pour mettre à jour le mot de passe

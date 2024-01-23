@@ -198,10 +198,13 @@ export class ChartsPage implements OnInit {
   public polarAreaChartType: ChartType = 'polarArea';
 
   content_loaded: boolean = false;
-  qrCode;
+  qrCode: any;
+  Nouvelle: any;
+  Ancienne: any;
   constructor(
     private helperService: HelperService, private Service: DataService
   ) {
+
     this.qrCode = sessionStorage.getItem('Carte');
     // !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
   
@@ -213,9 +216,14 @@ export class ChartsPage implements OnInit {
   ngOnInit() {
     // Create bar chart
     this.createBarChart();
-    this.qrCode = sessionStorage.getItem('Carte').replace(/"/g, '');
+    this.Nouvelle = sessionStorage.getItem('Nouvelle').replace(/"/g, '');
+    this.Ancienne = sessionStorage.getItem('Carte').replace(/"/g, '');
+    if (this.Nouvelle != '') {
+      this.qrCode = this.Nouvelle;
+    } else {
+      this.qrCode = this.Ancienne;
+    }
     // !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
-
     console.log(sessionStorage.getItem('Carte'));
   }
 

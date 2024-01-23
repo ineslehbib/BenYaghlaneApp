@@ -13,7 +13,7 @@ export class AuthService {
   login: string = "MOBILE";
   password: string = "Delt@S0ft";
   APICreation: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_AccountInsertFromJson?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APILoyalty: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_récuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APILoyalty: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_recuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
   APICatalogue: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/Marketing";
   constructor(
     private router: Router
@@ -76,7 +76,6 @@ export class AuthService {
           Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
         }
       });
-
       if (response.status === 200 && response.data.value.length > 0) {
         // Simulate setting the user session in local storage or cookies
         console.log(JSON.stringify(response.data.value[0]));
@@ -88,6 +87,8 @@ export class AuthService {
         sessionStorage.setItem('token', JSON.stringify(response.data.value[0]['@odata.etag']));
         sessionStorage.setItem('user', JSON.stringify(response.data.value[0]));
         sessionStorage.setItem('Carte', JSON.stringify(response.data.value[0].Carte));
+        sessionStorage.setItem('Contact', JSON.stringify(response.data.value[0].Main_Contact));
+        sessionStorage.setItem('Nouvelle', JSON.stringify(response.data.value[0].NewCard));
         return true;
       } else {
         return false;
@@ -119,6 +120,8 @@ export class AuthService {
         sessionStorage.setItem('token', JSON.stringify(response.data.value[0]['@odata.etag']));
         sessionStorage.setItem('user', JSON.stringify(response.data.value[0]));
         sessionStorage.setItem('Carte', JSON.stringify(response.data.value[0].Carte));
+        sessionStorage.setItem('Contact', JSON.stringify(response.data.value[0].Main_Contact));
+        sessionStorage.setItem('Nouvelle', JSON.stringify(response.data.value[0].NewCard));
         return true;
       } else {
         return false;
@@ -271,6 +274,9 @@ export class AuthService {
         sessionStorage.setItem('token', JSON.stringify(response.data.value[0]['@odata.etag']));
         sessionStorage.setItem('user', JSON.stringify(response.data.value[0]));
         sessionStorage.setItem('Carte', JSON.stringify(response.data.value[0].Carte));
+        sessionStorage.setItem('Contact', JSON.stringify(response.data.value[0].Main_Contact));
+        sessionStorage.setItem('Nouvelle', JSON.stringify(response.data.value[0].NewCard));
+
         return true;
       } else {
         return false;
@@ -280,5 +286,4 @@ export class AuthService {
       throw error; // Rethrow the error to be caught by the caller
     }
   }
-
 }

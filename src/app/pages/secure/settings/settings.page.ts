@@ -65,7 +65,7 @@ export class SettingsPage implements OnInit {
 
     const userData = {
       inputJson: JSON.stringify({
-        input: this.no,
+        input: sessionStorage.getItem('Carte').replace(/"/g, ''),
       }),
     };
     const success = this.authService.getFidelity(userData);

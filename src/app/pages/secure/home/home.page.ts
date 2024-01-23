@@ -25,19 +25,20 @@ export class HomePage implements OnInit {
       var userData = {
         inputJson: JSON.stringify({
           CompteNo: sessionStorage.getItem('No').replace(/"/g, ''),
+          ContactNo: sessionStorage.getItem('Contact').replace(/"/g, ''),
         }),
       };
 
       // Add your logic here to update the password
-      this.Data.Connection(userData).then((success) => {
-        if (success) {
-          // Display a message if the password change is successful
-          console.log("Changed");
-        } else {
-          // Display an error message if the password change fails
-          console.error('Error');
-        }
-      });
+      // this.Data.Connection(userData).then((success) => {
+      //   if (success) {
+      //     // Display a message if the password change is successful
+      //     console.log("Changed");
+      //   } else {
+      //     // Display an error message if the password change fails
+      //     console.error('Error');
+      //   }
+      // });
     }, 2000); // Delay of 2000 milliseconds (2 seconds)
 
   }

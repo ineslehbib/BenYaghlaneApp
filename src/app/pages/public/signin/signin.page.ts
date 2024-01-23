@@ -76,13 +76,18 @@ export class SigninPage implements OnInit {
           var userData = {
             inputJson: JSON.stringify({
               CompteNo: sessionStorage.getItem('No').replace(/"/g, ''),
+              ContactNo: sessionStorage.getItem('Contact').replace(/"/g, ''),
             }),
           };
           // Ajoutez ici la logique pour mettre à jour le mot de passe
           this.DataService.Connection(userData).then((success) => {
             if (success) {
+              if (success != 'true' || success != 'False') {
+                sessionStorage.setItem('Nouvelle', success);
+              };
+              console.log(success);
               // Affichez un message toast si le changement de mot de passe est réussi
-              console.log("changé")
+              console.log("changé");
             } else {
               // Affichez un message d'erreur si le changement de mot de passe a échoué
               console.log('error')

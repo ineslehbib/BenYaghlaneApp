@@ -27,7 +27,6 @@ export class DataService {
     //   .catch(error => console.error('Error creating SOAP client:', error));
   }
 
-
   async getArticle(): Promise<any> {
     try {
       const response = await CapacitorHttp.request({
@@ -102,11 +101,10 @@ export class DataService {
       throw error; // Rethrow the error to be caught by the caller
     }
   }
-  async Connection(Account: any): Promise<Boolean> {
+  async Connection(Account: any): Promise<any> {
     try {
       const response = await CapacitorHttp.request({
         method: 'POST',
-
         url: this.APICon, // Replace with your sign-up endpoint
         data: Account,
         headers: {
@@ -116,11 +114,11 @@ export class DataService {
       });
       if (response.status === 200) {
         // Handle successful signup response
-        console.log('Signup successful:', response.data);
-        return true;
+        console.log('Connexion successful:', response.data);
+        return response.data.value;
       } else {
         // Handle signup error
-        console.error('Signup failed:', response.data.value);
+        console.error('Connexion failed:', response.data.value);
         return false;
       }
     } catch (error) {
@@ -128,6 +126,5 @@ export class DataService {
       throw error; // Rethrow the error to be caught by the caller
     }
   }
-
- 
+  
 }
