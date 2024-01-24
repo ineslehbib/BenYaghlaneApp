@@ -89,6 +89,8 @@ export class AuthService {
         sessionStorage.setItem('Carte', JSON.stringify(response.data.value[0].Carte));
         sessionStorage.setItem('Contact', JSON.stringify(response.data.value[0].Main_Contact));
         sessionStorage.setItem('Nouvelle', JSON.stringify(response.data.value[0].NewCard));
+        sessionStorage.setItem('telephone', JSON.stringify(response.data.value[0].Phone));
+        sessionStorage.setItem('email', JSON.stringify(response.data.value[0].email));
         return true;
       } else {
         return false;
@@ -122,6 +124,9 @@ export class AuthService {
         sessionStorage.setItem('Carte', JSON.stringify(response.data.value[0].Carte));
         sessionStorage.setItem('Contact', JSON.stringify(response.data.value[0].Main_Contact));
         sessionStorage.setItem('Nouvelle', JSON.stringify(response.data.value[0].NewCard));
+        sessionStorage.setItem('telephone', JSON.stringify(response.data.value[0].Phone));
+        sessionStorage.setItem('email', JSON.stringify(response.data.value[0].NewCard));
+        sessionStorage.setItem('email', JSON.stringify(response.data.value[0].email));
         return true;
       } else {
         return false;
@@ -276,7 +281,8 @@ export class AuthService {
         sessionStorage.setItem('Carte', JSON.stringify(response.data.value[0].Carte));
         sessionStorage.setItem('Contact', JSON.stringify(response.data.value[0].Main_Contact));
         sessionStorage.setItem('Nouvelle', JSON.stringify(response.data.value[0].NewCard));
-
+        sessionStorage.setItem('telephone', JSON.stringify(response.data.value[0].Phone));
+        sessionStorage.setItem('email', JSON.stringify(response.data.value[0].email));
         return true;
       } else {
         return false;
