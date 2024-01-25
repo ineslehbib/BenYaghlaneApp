@@ -80,6 +80,8 @@ export class AccountPage implements OnInit {
 
   userData: any;
   signup_form: FormGroup;
+  range: number;
+  sexe: any;
   magasins: any[]; 
   constructor(private formBuilder: FormBuilder,
     private toastService: ToastService,
@@ -93,18 +95,29 @@ export class AccountPage implements OnInit {
   }
 
   ngOnInit() {
+
+    function getKeyByValue(object, value) {
+      return Object.keys(object).find(key => object[key] === value);
+    }
+    if (sessionStorage.getItem('sexe').replace(/"/g, '') == 'Male') {
+      this.sexe = 1
+    }
+    else if (sessionStorage.getItem('sexe').replace(/"/g, '') == 'Female') {
+      this.sexe = 2
+    }
     this.signup_form = this.formBuilder.group({
       email: [sessionStorage.getItem('email').replace(/"/g, '')],
       // Add other form controls with validators if needed
       Nom: [sessionStorage.getItem('Main_Contact_Name').replace(/"/g, '')],
       Tel: [sessionStorage.getItem('telephone').replace(/"/g, ''), [phoneNumberValidator]],
       Magasin: [''],
-      Civilite: ['1'],
-      Gouvernorat: [''],
-      tranche: [''],
+      Civilite: [this.sexe],
+      Gouvernorat: [sessionStorage.getItem('Gouvernorat').replace(/"/g, '')],
+      tranche: [parseInt(getKeyByValue(this.ageRanges, sessionStorage.getItem('tranche').replace(/"/g, '')), 10)],
       Ville: [''],
     });
     this.loadMagasins();
+
   }
   async Modify() {
     this.submit_attempt = true;
@@ -157,13 +170,13 @@ export class AccountPage implements OnInit {
               Ville: formData.Ville,
             }),
           };
-
           console.log(userData);
 
           const success = await this.data.ChangeAccount(userData);
 
           if (success) {
             this.toastService.presentToast('Succés !', 'Modification réussie', 'top', 'success', 2000);
+
             await this.router.navigate(['/home']);
 
           } else {
@@ -186,24 +199,33 @@ export class AccountPage implements OnInit {
     } finally {
       await loading.dismiss();
     }
-
   }
+  // Assuming you have a form group named signup_form
   async onGouvernoratChange(event: any) {
-    const selectedGouvernorat = event.target.value;
+    const selectedGouvernorat = event.detail.value; // Use event.detail.value to get the selected value
     try {
       this.Villes = await this.data.getVilles(selectedGouvernorat);
       console.log(this.Villes);
+
+      // Reset the 'Ville' control value when the selected governorate changes
+      this.signup_form.get('Ville').setValue('');
     } catch (error) {
       console.error('Erreur lors du chargement des villes:', error);
     }
   }
+
   async loadVilles(gouvernorat: string) {
     try {
       this.Villes = await this.data.getVilles(gouvernorat);
       console.log(this.Villes);
-      if (this.Villes.length > 0) {
-        const defaultVille = this.Villes || '';
-        this.signup_form.get('Ville').setValue(defaultVille);
+
+      // Check if Villes array is not empty
+      if (this.Villes && this.Villes.length > 0) {
+        // Assuming 'Villes' is an array of strings representing city names
+        this.signup_form.get('Ville').setValue(this.Villes[0]);
+
+      // If 'Villes' is an array of objects with a 'Code' property, use:
+      // this.signup_form.get('Ville').setValue(this.Villes[0].Code);
       }
     } catch (error) {
       console.error('Erreur lors du chargement des villes:', error);

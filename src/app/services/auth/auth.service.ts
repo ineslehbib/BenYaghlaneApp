@@ -91,6 +91,10 @@ export class AuthService {
         sessionStorage.setItem('Nouvelle', JSON.stringify(response.data.value[0].NewCard));
         sessionStorage.setItem('telephone', JSON.stringify(response.data.value[0].Phone));
         sessionStorage.setItem('email', JSON.stringify(response.data.value[0].email));
+        sessionStorage.setItem('sexe', JSON.stringify(response.data.value[0].sexe));
+        sessionStorage.setItem('tranche', JSON.stringify(response.data.value[0].tranche));
+        sessionStorage.setItem('Gouvernorat', JSON.stringify(response.data.value[0].Gouvernorat));
+        sessionStorage.setItem('Magasin', JSON.stringify(response.data.value[0].Magasin));
         return true;
       } else {
         return false;
@@ -127,6 +131,11 @@ export class AuthService {
         sessionStorage.setItem('telephone', JSON.stringify(response.data.value[0].Phone));
         sessionStorage.setItem('email', JSON.stringify(response.data.value[0].NewCard));
         sessionStorage.setItem('email', JSON.stringify(response.data.value[0].email));
+        sessionStorage.setItem('sexe', JSON.stringify(response.data.value[0].sexe));
+        sessionStorage.setItem('tranche', JSON.stringify(response.data.value[0].tranche));
+        sessionStorage.setItem('Gouvernorat', JSON.stringify(response.data.value[0].Gouvernorat));
+        sessionStorage.setItem('Magasin', JSON.stringify(response.data.value[0].Magasin));
+        return true;
         return true;
       } else {
         return false;
@@ -267,7 +276,6 @@ export class AuthService {
           Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
         }
       });
-
       if (response.status === 200 && response.data.value.length > 0) {
         // Simulate setting the user session in local storage or cookies
         console.log(JSON.stringify(response.data.value[0]));
@@ -283,6 +291,11 @@ export class AuthService {
         sessionStorage.setItem('Nouvelle', JSON.stringify(response.data.value[0].NewCard));
         sessionStorage.setItem('telephone', JSON.stringify(response.data.value[0].Phone));
         sessionStorage.setItem('email', JSON.stringify(response.data.value[0].email));
+        sessionStorage.setItem('sexe', JSON.stringify(response.data.value[0].sexe));
+        sessionStorage.setItem('tranche', JSON.stringify(response.data.value[0].tranche));
+        sessionStorage.setItem('Gouvernorat', JSON.stringify(response.data.value[0].Gouvernorat));
+        sessionStorage.setItem('Magasin', JSON.stringify(response.data.value[0].Magasin));
+        return true;
         return true;
       } else {
         return false;
