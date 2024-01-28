@@ -10,15 +10,15 @@ import { CapacitorHttp, HttpResponse } from '@capacitor/core';
   providedIn: 'root'
 })
 export class DataService {
-  apiUrl: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
-  login: string = "MOBILE";
-  password: string = "Delt@S0ft";
-  APILoyalty: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_recuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APIPassword: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_ChangerMotDepasse?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APICon: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_Connection?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APIChange: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_ChangeAccount?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APIMagasin: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/Magasin";
-  APIVilles: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/villes";
+  apiUrl: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
+  login: string = "Ines";
+  password: string = "Ines@2025";
+  APILoyalty: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_recuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APIPassword: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_ChangerMotDepasse?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APICon: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_Connection?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APIChange: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/MobileApp_ChangeAccount?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APIMagasin: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/Magasin";
+  APIVilles: string = "http://192.168.1.89:3248/BYS_WS/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/villes";
   chVal: String;
   choosenNumberValue: String;
   constructor() {
