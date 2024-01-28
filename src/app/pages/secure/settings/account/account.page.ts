@@ -83,6 +83,7 @@ export class AccountPage implements OnInit {
   range: number;
   sexe: any;
   magasins: any[]; 
+
   constructor(private formBuilder: FormBuilder,
     private toastService: ToastService,
     private navController: NavController,
@@ -93,9 +94,7 @@ export class AccountPage implements OnInit {
     private data: DataService,
   ) {
   }
-
   ngOnInit() {
-
     function getKeyByValue(object, value) {
       return Object.keys(object).find(key => object[key] === value);
     }
@@ -115,9 +114,10 @@ export class AccountPage implements OnInit {
       Gouvernorat: [sessionStorage.getItem('Gouvernorat').replace(/"/g, '')],
       tranche: [parseInt(getKeyByValue(this.ageRanges, sessionStorage.getItem('tranche').replace(/"/g, '')), 10)],
       Ville: [''],
+
     });
     this.loadMagasins();
-
+    this.loadVilles(sessionStorage.getItem('Gouvernorat').replace(/"/g, ''));
   }
   async Modify() {
     this.submit_attempt = true;
@@ -132,15 +132,12 @@ export class AccountPage implements OnInit {
       console.log('Veuillez remplir tous les champs.');
       return;
     }
-
-
     const telPattern = /^(2|9|3|7|5)\d{7}$/; // Starts with 2, 9, 3, 7, or 5, followed by 7 digits
     if (!telPattern.test(this.signup_form.value.Tel)) {
       this.toastService.presentToast('Erreur', 'Le numéro de téléphone est invalide', 'top', 'danger', 2000);
       console.log('Le numéro de téléphone doit commencer par 2, 9, 3, 7 ou 5 et avoir 8 chiffres au total.');
       return;
     }
-
     try {
       await loading.present();
 
@@ -222,7 +219,6 @@ export class AccountPage implements OnInit {
       // Check if Villes array is not empty
       if (this.Villes && this.Villes.length > 0) {
         // Assuming 'Villes' is an array of strings representing city names
-        this.signup_form.get('Ville').setValue(this.Villes[0]);
 
       // If 'Villes' is an array of objects with a 'Code' property, use:
       // this.signup_form.get('Ville').setValue(this.Villes[0].Code);

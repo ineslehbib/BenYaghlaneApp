@@ -95,6 +95,8 @@ export class AuthService {
         sessionStorage.setItem('tranche', JSON.stringify(response.data.value[0].tranche));
         sessionStorage.setItem('Gouvernorat', JSON.stringify(response.data.value[0].Gouvernorat));
         sessionStorage.setItem('Magasin', JSON.stringify(response.data.value[0].Magasin));
+        sessionStorage.setItem('poste', JSON.stringify(response.data.value[0].poste));
+
         return true;
       } else {
         return false;
@@ -135,6 +137,8 @@ export class AuthService {
         sessionStorage.setItem('tranche', JSON.stringify(response.data.value[0].tranche));
         sessionStorage.setItem('Gouvernorat', JSON.stringify(response.data.value[0].Gouvernorat));
         sessionStorage.setItem('Magasin', JSON.stringify(response.data.value[0].Magasin));
+        sessionStorage.setItem('poste', JSON.stringify(response.data.value[0].poste));
+
         return true;
         return true;
       } else {
@@ -294,6 +298,7 @@ export class AuthService {
         sessionStorage.setItem('sexe', JSON.stringify(response.data.value[0].sexe));
         sessionStorage.setItem('tranche', JSON.stringify(response.data.value[0].tranche));
         sessionStorage.setItem('Gouvernorat', JSON.stringify(response.data.value[0].Gouvernorat));
+        sessionStorage.setItem('poste', JSON.stringify(response.data.value[0].poste));
         sessionStorage.setItem('Magasin', JSON.stringify(response.data.value[0].Magasin));
         return true;
         return true;
