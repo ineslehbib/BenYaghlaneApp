@@ -15,7 +15,7 @@
 
   <ion-card class="ion-no-margin profile-card">
     <ion-card-content>
-      <img src="../../../../assets/card-media.png" height="150" width="150">
+      <img src="../../../../assets/card-media.png" height="100" width="100">
 
       <h1>
         <ion-text><strong></strong></ion-text>
@@ -23,23 +23,69 @@
 
       </ion-card-content>
       </ion-card>
-
-
   <div class="ion-padding">
-    <form class="form-default" [formGroup]="edit_profile_form_perso" (submit)="submitPassword()">
-
+    <form class="form-default" [formGroup]="signup_form" (submit)="Modify()">
+      <!-- Other form controls -->
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input formControlName="newPassword" type="password" placeholder="Nouveau mot de passe"></ion-input>
+        <ion-label>Nom & Prénom</ion-label>
+        <ion-input formControlName="Nom" autocomplete="off" label="Nom & Prénom" labelPlacement="floating"></ion-input>
       </ion-item>
       <ion-item class="animate__animated animate__fadeInUp">
-        <ion-input formControlName="confirmPassword" type="password"
-          placeholder="Confirmer le nouveau mot de passe"></ion-input>
+        <ion-label>Genre</ion-label>
+        <ion-select formControlName="Civilite" placeholder="Sélectionnez le genre">
+          <ion-select-option *ngFor="let Civilite of civilities" [value]="Civilite"> {{ Civilite === 1 ? 'Homme' : 'Femme'
+            }}</ion-select-option>
+        </ion-select>
       </ion-item>
-        <ion-button class="ion-margin-top ion-button1" expand="block" size="medium" type="submit">
-          Modifier
+      <ion-item class="animate__animated animate__fadeInUp">
+        <ion-label>Tranche d'âge</ion-label>
+        <ion-select formControlName="tranche" placeholder="Sélectionnez la tranche d'âge">
+          <ion-select-option *ngFor="let tranche of tranches" [value]="tranche">
+            {{ ageRanges[tranche] || '' }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="animate__animated animate__fadeInUp">
+        <ion-label>Email</ion-label>
+        <ion-input formControlName="email" autocomplete="off"></ion-input>
+      </ion-item>
+      <ion-item class="animate__animated animate__fadeInUp">
+        <ion-label>Téléphone</ion-label>
+        <ion-input formControlName="Tel" autocomplete="off"></ion-input>
+      </ion-item>
+      <!-- <ion-item class="animate__animated animate__fadeInUp">
+        <ion-label>Magasin</ion-label>
+        <ion-select formControlName="Magasin" placeholder="Sélectionnez un magasin">
+          <ion-select-option *ngFor="let magasin of magasins" [value]="magasin.No_">{{ magasin.Name |
+            titlecase}}</ion-select-option>
+        </ion-select>
+      </ion-item> -->
+      <ion-item class="animate__animated animate__fadeInUp">
+        <ion-label>Gouvernorat </ion-label>
+        <ion-select formControlName="Gouvernorat" placeholder="Sélectionnez le gouvernorat"
+          (ionChange)="onGouvernoratChange($event)">
+          <ion-select-option *ngFor="let gouvernorat of gouvernorats" [value]="gouvernorat">
+            {{ gouvernorat }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="animate__animated animate__fadeInUp">
+        <ion-label>Ville </ion-label>
+        <ion-select formControlName="Ville" placeholder="Sélectionnez la ville" *ngIf="signup_form.get('Gouvernorat').value">
+          <ion-select-option *ngFor="let Ville of Villes" [value]="Ville.Code">
+            {{ Ville.County | titlecase }}
+          </ion-select-option>
+        </ion-select>
+        <ion-select placeholder="Sélectionnez le gouvernorat" *ngIf="!signup_form.get('Gouvernorat').value">
+          <ion-select-option>
+            Gouvernorat avant
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+          <ion-button class="ion-margin-top ion-button2" expand="block" size="medium" (click)="Modify()">
+            Modifier
         </ion-button>
-
-    </form>
+      </form>
   </div>
 
 </ion-content>

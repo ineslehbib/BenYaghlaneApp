@@ -3,7 +3,7 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartOptions, ChartType } fr
 import { BaseChartDirective } from 'ng2-charts';
 import { HelperService } from 'src/app/services/helper/helper.service';
 import { DataService } from 'src/app/services/data/data.service';
-
+import { ToastService } from 'src/app/services/toast/toast.service';
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.page.html',
@@ -202,7 +202,8 @@ export class ChartsPage implements OnInit {
   Nouvelle: any;
   Ancienne: any;
   constructor(
-    private helperService: HelperService, private Service: DataService
+    private helperService: HelperService, private Service: DataService,
+    private toastService: ToastService
   ) {
 
     this.qrCode = sessionStorage.getItem('Carte');
@@ -218,8 +219,9 @@ export class ChartsPage implements OnInit {
     this.createBarChart();
     this.Nouvelle = sessionStorage.getItem('Nouvelle').replace(/"/g, '');
     this.Ancienne = sessionStorage.getItem('Carte').replace(/"/g, '');
-    if (this.Nouvelle != '') {
+    if (this.Nouvelle != '' && this.Nouvelle != 'true') {
       this.qrCode = this.Nouvelle;
+      this.toastService.presentToast('Paramètres -> Informations utilisateurs', "Veuillez remplir les infommations manquantes ", 'top', 'success', 2000);
     } else {
       this.qrCode = this.Ancienne;
     }

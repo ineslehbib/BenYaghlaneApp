@@ -92,8 +92,8 @@ export class SignupPage implements OnInit {
 
     this.signup_form = this.formBuilder.group({
       email: [''],
-      password: ['', Validators.required],
-      password_repeat: ['', Validators.required],
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
+      password_repeat: ['', Validators.compose([Validators.minLength(6), Validators.required])],
       // Add other form controls with validators if needed
       Nom: ['', Validators.required],
       Prénom: ['', Validators.required],
