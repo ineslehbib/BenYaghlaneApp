@@ -258,7 +258,6 @@ export class AuthService {
       throw error;
     }
   };
-
   // Sign out
   async signOut() {
     // ...
