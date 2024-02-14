@@ -1,17 +1,18 @@
 :host {
   ion-header {
-      background: #eac24d !important;
-    }
-  
-    ion-toolbar {
-      --background: #eac24d !important;
-    }
+    background: #eac24d !important;
+  }
+
+  ion-toolbar {
+    --background: #eac24d !important;
+  }
+
   body {
     --background: #eac24d !important;
-    }
-    
-    ion-content {
-      --background: #eac24d !important;
+  }
+
+  ion-content {
+    --background: #eac24d !important;
   }
 
 
@@ -25,32 +26,37 @@
     font-size: 16px;
     font-weight: 700;
   }
-        ion-card {
-          position: relative;
-        }
-    
-        .promotion-badge {
-          z-index: 50;
-          position: absolute;
-          top: 0;
-          left: 0;
-          background-color: #ff0000;
-          /* Couleur de fond de la bande */
-          color: #ffffff;
-          /* Couleur du texte de la bande */
-          padding: 5px 10px;
-          /* Espacement interne de la bande */
-          font-size: 14px;
-          /* Taille de police de la bande */
-          border-radius: 5px;
-          /* Bordure arrondie de la bande */
-        }
-                                                                                                                                ion-searchbar {
-                                                                                                                                  background: #eac24d !important;
-                                                                                                                                  color: #523614;
-                                                                                                                                }
-                                                                                                                                }
-                                                                
-                                                                                                                                ion-card {
-                                                                                                                                  border-radius: 30px;
-                                                                                                                                }
+
+  ion-card {
+    position: relative;
+  }
+
+  .promotion-badge {
+    z-index: 50;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ff0000;
+    /* Couleur de fond de la bande */
+    color: #ffffff;
+    /* Couleur du texte de la bande */
+    padding: 5px 10px;
+    /* Espacement interne de la bande */
+    font-size: 14px;
+    /* Taille de police de la bande */
+    border-radius: 20px 2px 25px 0;
+    /* Bordure arrondie de la bande */
+    width: 40%;
+    /* Augmentation de la largeur */
+  }
+
+
+  ion-searchbar {
+    background: #eac24d !important;
+    color: #523614;
+  }
+}
+
+ion-card {
+  border-radius: 30px;
+}

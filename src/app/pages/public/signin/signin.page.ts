@@ -82,7 +82,20 @@ export class SigninPage implements OnInit {
           if ((sessionStorage.getItem('sexe').replace(/"/g, '') == '') || (sessionStorage.getItem('tranche').replace(/"/g, '') == '') || (sessionStorage.getItem('poste').replace(/"/g, '') == '') || (sessionStorage.getItem('Gouvernorat').replace(/"/g, '') == '') || (sessionStorage.getItem('telephone').replace(/"/g, '') == '')) {
             console.log('ok ok ');
             this.router.navigate(['/settings//devices']);
-            
+            this.DataService.Connection(userData).then((success) => {
+              if (success) {
+
+                if (success != 'true' || success != 'False') {
+                  sessionStorage.setItem('Nouvelle', success);
+                };
+                console.log(success);
+                // Affichez un message toast si le changement de mot de passe est réussi
+                console.log("changé");
+              } else {
+                // Affichez un message d'erreur si le changement de mot de passe a échoué
+                console.log('error')
+              }
+            });
           } else {
             this.router.navigate(['/home']);
             // Ajoutez ici la logique pour mettre à jour le mot de passe
