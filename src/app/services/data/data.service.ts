@@ -152,5 +152,4 @@ export class DataService {
       throw error; // Rethrow the error to be caught by the caller
     }
   }
-  
 }

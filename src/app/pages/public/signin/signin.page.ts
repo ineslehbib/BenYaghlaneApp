@@ -72,27 +72,51 @@ export class SigninPage implements OnInit {
 
         if (success) {
           // Redirect to the home page or any other page upon successful sign-in
-          this.router.navigate(['/home']);
+
           var userData = {
             inputJson: JSON.stringify({
               CompteNo: sessionStorage.getItem('No').replace(/"/g, ''),
               ContactNo: sessionStorage.getItem('Contact').replace(/"/g, ''),
-            }),
+            })
           };
-          // Ajoutez ici la logique pour mettre à jour le mot de passe
-          this.DataService.Connection(userData).then((success) => {
-            if (success) {
-              if (success != 'true' || success != 'False') {
-                sessionStorage.setItem('Nouvelle', success);
-              };
-              console.log(success);
-              // Affichez un message toast si le changement de mot de passe est réussi
-              console.log("changé");
-            } else {
-              // Affichez un message d'erreur si le changement de mot de passe a échoué
-              console.log('error')
-            }
-          });
+          if ((sessionStorage.getItem('sexe').replace(/"/g, '') == '') || (sessionStorage.getItem('tranche').replace(/"/g, '') == '') || (sessionStorage.getItem('poste').replace(/"/g, '') == '') || (sessionStorage.getItem('Gouvernorat').replace(/"/g, '') == '') || (sessionStorage.getItem('telephone').replace(/"/g, '') == '')) {
+            console.log('ok ok ');
+            this.router.navigate(['/settings//devices']);
+            this.DataService.Connection(userData).then((success) => {
+              if (success) {
+
+                if (success != 'true' || success != 'False') {
+                  sessionStorage.setItem('Nouvelle', success);
+                };
+                console.log(success);
+                // Affichez un message toast si le changement de mot de passe est réussi
+                console.log("changé");
+              } else {
+                // Affichez un message d'erreur si le changement de mot de passe a échoué
+                console.log('error')
+              }
+            });
+          } else {
+            this.router.navigate(['/home']);
+            // Ajoutez ici la logique pour mettre à jour le mot de passe
+            this.DataService.Connection(userData).then((success) => {
+              if (success) {
+
+                if (success != 'true' || success != 'False') {
+                  sessionStorage.setItem('Nouvelle', success);
+                };
+                console.log(success);
+                // Affichez un message toast si le changement de mot de passe est réussi
+                console.log("changé");
+              } else {
+                // Affichez un message d'erreur si le changement de mot de passe a échoué
+                console.log('error')
+              }
+            });
+          }
+
+
+
         } else {
           // Display an error message to the user
           this.toastService.presentToast('Erreur', 'Numéro ou mot de passe invalide', 'top', 'danger', 2000);

@@ -61,8 +61,20 @@ export class SettingsPage implements OnInit {
   }
 
 
-  ngOnInit() {
-
+  async ngOnInit() {
+    const email = sessionStorage.getItem('Carte').replace(/"/g, ''); // Replace with the actual email or get it from user input
+    const userExists = await this.authService.getUser(email);
+    if (userExists) {
+      console.log('User exists.');
+      console.log(userExists);
+      // Optionally, navigate to another page or perform additional actions
+      this.no = sessionStorage.getItem('No') !== null ? sessionStorage.getItem('No').replace(/"/g, ' ') : null;
+      this.carte = sessionStorage.getItem('Carte') !== null ? sessionStorage.getItem('Carte').replace(/"/g, ' ') : null;
+      this.nom = sessionStorage.getItem('Main_Contact_Name') !== null ? sessionStorage.getItem('Main_Contact_Name').replace(/"/g, ' ') : null;
+      this.total = sessionStorage.getItem('Balance') !== null ? sessionStorage.getItem('Balance').replace(/"/g, ' ') : '0';
+      this.consomme = sessionStorage.getItem('Unprocessed_Points') !== null ? sessionStorage.getItem('Unprocessed_Points') : '0';
+      this.validity = sessionStorage.getItem('Validity') !== null ? sessionStorage.getItem('Validity').replace(/"/g, ' ') : '0';
+    }
     const userData = {
       inputJson: JSON.stringify({
         input: sessionStorage.getItem('Carte').replace(/"/g, ''),
@@ -71,6 +83,7 @@ export class SettingsPage implements OnInit {
     const success = this.authService.getFidelity(userData);
     console.log(this.authService.getFidelity(this.no));
     this.calculateFillPercentage();
+
 
   }
 

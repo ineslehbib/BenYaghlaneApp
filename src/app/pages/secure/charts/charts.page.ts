@@ -221,7 +221,7 @@ export class ChartsPage implements OnInit {
     this.Ancienne = sessionStorage.getItem('Carte').replace(/"/g, '');
     if (this.Nouvelle != '' && this.Nouvelle != 'true') {
       this.qrCode = this.Nouvelle;
-      this.toastService.presentToast('Paramètres -> Informations utilisateurs', "Veuillez remplir les infommations manquantes ", 'top', 'success', 2000);
+      // this.toastService.presentToast('Paramètres -> Informations utilisateurs', "Veuillez remplir les infommations manquantes ", 'top', 'success', 2000);
     } else {
       this.qrCode = this.Ancienne;
     }
