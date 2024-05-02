@@ -9,12 +9,12 @@ import { CapacitorHttp, HttpResponse } from '@capacitor/core';
 
 export class AuthService {
 
-  apiUrl: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
-  login: string = "MOBILE";
-  password: string = "Delt@S0ft";
-  APICreation: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_AccountInsertFromJson?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APILoyalty: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_recuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APICatalogue: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/Marketing";
+  apiUrl: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
+  login: string = "Fidelite";
+  password: string = "Noussa@2025";
+  APICreation: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/MobileApp_AccountInsertFromJson?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APILoyalty: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/MobileApp_recuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APICatalogue: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/Marketing";
   constructor(
     private router: Router
   ) { }

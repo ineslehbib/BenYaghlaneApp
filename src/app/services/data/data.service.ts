@@ -10,15 +10,15 @@ import { CapacitorHttp, HttpResponse } from '@capacitor/core';
   providedIn: 'root'
 })
 export class DataService {
-  apiUrl: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
-  login: string = "MOBILE";
-  password: string = "Delt@S0ft";
-  APILoyalty: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_recuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APIPassword: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_ChangerMotDepasse?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APICon: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_Connection?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APIChange: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/MobileApp_ChangeAccount?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
-  APIMagasin: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/Magasin";
-  APIVilles: string = "http://172.17.30.217:8048/BYCDEVNUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/villes";
+  apiUrl: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')";
+  login: string = "Fidelite";
+  password: string = "Noussa@2025";
+  APILoyalty: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/MobileApp_recuppoint?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APIPassword: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/MobileApp_ChangerMotDepasse?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APICon: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/MobileApp_Connection?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APIChange: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/MobileApp_ChangeAccount?company=GRANDE%20EPICERIE%20BEN%20YAGHLANE";
+  APIMagasin: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/Magasin";
+  APIVilles: string = "http://41.227.172.242:3048/WS_NUP/ODataV4/Company('GRANDE%20EPICERIE%20BEN%20YAGHLANE')/villes";
   chVal: String;
   choosenNumberValue: String;
   constructor() {
