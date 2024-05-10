@@ -39,6 +39,7 @@
     "animate.css": "^4.1.1",
     "chart.js": "^4.2.0",
     "cordova-sqlite-storage": "^6.1.0",
+    "crypto-js": "^4.2.0",
     "date-fns": "^2.29.3",
     "ng2-charts": "^4.1.1",
     "ngx-gauge": "^7.0.0",

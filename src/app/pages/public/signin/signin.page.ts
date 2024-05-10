@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'src/app/services/toast/toast.service';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data/data.service';
+import { SHA256 } from 'crypto-js';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.page.html',
@@ -65,9 +67,9 @@ export class SigninPage implements OnInit {
         await loading.present();
 
         const success = isPhoneMode
-          ? await this.authService.signInPhone(email, password)
+          ? await this.authService.signInPhone(email, SHA256(password).toString())
           :
-          await this.authService.signIn(email, password);
+          await this.authService.signIn(email, SHA256(password).toString());
         await loading.dismiss();
 
         if (success) {
