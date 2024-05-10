@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CapacitorHttp, HttpResponse } from '@capacitor/core';
+import { SHA256 } from 'crypto-js';
 
 
 @Injectable({
@@ -78,7 +79,7 @@ export class AuthService {
       });
       if (response.status === 200 && response.data.value.length > 0) {
         // Simulate setting the user session in local storage or cookies
-        console.log(JSON.stringify(response.data.value[0]));
+        //     console.log(JSON.stringify(response.data.value[0]));
         sessionStorage.setItem('No', JSON.stringify(response.data.value[0].No));
         sessionStorage.setItem('Main_Contact_Name', JSON.stringify(response.data.value[0].Main_Contact_Name));
         sessionStorage.setItem('Issued_Award_Points', JSON.stringify(response.data.value[0].Issued_Award_Points));
@@ -102,7 +103,7 @@ export class AuthService {
         return false;
       }
     } catch (error) {
-      console.error('Error fetching data:', error);
+      //  console.error('Error fetching data:', error);
       throw error; // Rethrow the error to be caught by the caller
     }
   }
@@ -119,7 +120,7 @@ export class AuthService {
 
       if (response.status === 200 && response.data.value.length > 0) {
         // Simulate setting the user session in local storage or cookies
-        console.log(JSON.stringify(response.data.value[0]));
+        //   console.log(JSON.stringify(response.data.value[0]));
         sessionStorage.setItem('No', JSON.stringify(response.data.value[0].No));
         sessionStorage.setItem('Main_Contact_Name', JSON.stringify(response.data.value[0].Main_Contact_Name));
         sessionStorage.setItem('Issued_Award_Points', JSON.stringify(response.data.value[0].Issued_Award_Points));
@@ -140,18 +141,19 @@ export class AuthService {
         sessionStorage.setItem('poste', JSON.stringify(response.data.value[0].poste));
 
         return true;
-        return true;
       } else {
         return false;
       }
     } catch (error) {
-      console.error('Error fetching data:', error);
+      //  console.error('Error fetching data:', error);
       throw error; // Rethrow the error to be caught by the caller
     }
   }
   // Sign up
   async signUp(userData: any): Promise<boolean> {
     try {
+
+
       const response = await CapacitorHttp.request({
         method: 'POST',
         url: this.APICreation, // Replace with your sign-up endpoint
@@ -164,16 +166,16 @@ export class AuthService {
 
       if (response.status === 200) {
         // Handle successful signup response
-        console.log('Signup successful:', response.data);
+        //    console.log('Signup successful:', response.data);
         await this.setSession(response.data.value);
         return true;
       } else {
         // Handle signup error
-        console.error('Signup failed:', response.data.value);
+        // console.error('Signup failed:', response.data.value);
         return false;
       }
     } catch (error) {
-      console.error('Error during signup:', error);
+      //   console.error('Error during signup:', error);
       throw error; // Rethrow the error to be caught by the caller
     }
   }
@@ -186,19 +188,19 @@ export class AuthService {
           Authorization: `Basic ${btoa(this.login + ":" + this.password)}`
         }
       });
-      console.log('Response Status:', response.status);
+      //  console.log('Response Status:', response.status);
       if (response.status === 200 && response.data.value !== undefined) {
-        console.log('Data:', response.data);
+        //    console.log('Data:', response.data);
         // Vérifiez si le tableau value existe et a une longueur non nulle
         return response.data.value.length === 0;
       }
 
       return false;
 
-      console.log('Request failed with status:', response.status);
+      //  console.log('Request failed with status:', response.status);
       return false;
     } catch (error) {
-      console.error('Error checking phone uniqueness:', error);
+      //  console.error('Error checking phone uniqueness:', error);
       throw error;
     }
   }
@@ -215,16 +217,16 @@ export class AuthService {
       });
       if (response.status === 200) {
         // Handle successful signup response
-        console.log('Signup successful:', response.data);
+        //   console.log('Signup successful:', response.data);
         sessionStorage.setItem('Validity', JSON.stringify(response.data.value));
         return true;
       } else {
         // Handle signup error
-        console.error('Signup failed:', response.data.value);
+        //  console.error('Signup failed:', response.data.value);
         return false;
       }
     } catch (error) {
-      console.error('Error during signup:', error);
+      //   console.error('Error during signup:', error);
       throw error; // Rethrow the error to be caught by the caller
     }
   }
@@ -239,7 +241,7 @@ export class AuthService {
       });
 
       if (response.status === 200 && response.data.value !== undefined) {
-        console.log('Data:', response.data);
+        //   console.log('Data:', response.data);
 
         // Store UrlCatalogue values in sessionStorage
         const catalogueData = response.data.value[0]; // Assuming there's only one item in the array

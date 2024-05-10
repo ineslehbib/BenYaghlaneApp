@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActionSheetController, NavController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data/data.service';
 import { ToastService } from 'src/app/services/toast/toast.service';
+import { SHA256 } from 'crypto-js';
 
 @Component({
   selector: 'app-edit',
@@ -33,8 +34,6 @@ export class EditPage implements OnInit {
       newPassword: ['', Validators.required],
       confirmPassword: ['', Validators.required],
     });
-
-
   }
 
   // Update profile picture
@@ -80,7 +79,8 @@ export class EditPage implements OnInit {
       var userData = {
         inputJson: JSON.stringify({
           CompteNo: sessionStorage.getItem('No').replace(/"/g, ''),
-          Password: newPassword
+
+          Password: SHA256(newPassword).toString()
         }),
       };
       // Ajoutez ici la logique pour mettre à jour le mot de passe

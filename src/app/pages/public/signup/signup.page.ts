@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 import { ModalController } from '@ionic/angular';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { SHA256 } from 'crypto-js';
 export const phoneNumberValidator: ValidatorFn = (control: AbstractControl): { [key: string]: any } | null => {
   const value = control.value;
 
@@ -160,7 +161,7 @@ export class SignupPage implements OnInit {
             inputJson: JSON.stringify({
               codeClub: 'EL ECHRA',
               Name: `${formData.Prénom} ${formData.Nom}`,
-              Password: formData.password,
+              Password: SHA256(formData.password).toString(),
               Description: formData.Description,
               PhoneNo: formData.Tel,
               // Adresse: formData.Adresse,
@@ -207,7 +208,7 @@ export class SignupPage implements OnInit {
           }
         } catch (checkPhoneError) {
           console.log('Erreur lors de la vérification du numéro de téléphone :', checkPhoneError);
-          this.toastService.presentToast('Erreur', 'Une erreur est survenue lors de la vérification du numéro de téléphone', 'top', 'danger', 2000);
+          //this.toastService.presentToast('Erreur', 'Une erreur est survenue lors de la vérification du numéro de téléphone', 'top', 'danger', 2000);
         } finally {
           await loading.dismiss();
         }
